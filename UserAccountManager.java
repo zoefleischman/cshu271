@@ -15,17 +15,32 @@ public class UserAccountManager {
     // You need to complete this method
     public String registerNewUser(String userName, String password, String reenteredPassword, 
     		String firstName, String lastName, String email, String phone){
+    		String returnMessage = "";
+    		boolean duplicate = false;
+    		for(UserAccount a : userAccounts) {
+    			if(a.getUserName().equalsIgnoreCase(userName)) {
+    				duplicate=true;
+    			}
+    		}
+    		if(duplicate) {
+    			returnMessage = "Username already taken.\n";
+    		}
+    		returnMessage+=UserAccount.checkInputError(userName, password, firstName, lastName, email, phone);
+    	
     		// check if userName, password, firstName, lastName, email, or phone is invalid 
     		// if invalid, return error message
     		// if reenteredPassword does not match password
     		// return an error message;
     		// if userName already exists
     		// return an error message;
-    		UserAccount newAccount = new UserAccount();
-    		setAccountProfile(newAccount, userName, password, firstName, lastName, email, phone);
-    		newAccount.setRegistrationDate(new Date());
-    		userAccounts.add(newAccount);
-    	    return NOINPUTERROR;
+    		if(returnMessage.equals("")) {
+    			UserAccount newAccount = new UserAccount();
+    			setAccountProfile(newAccount, userName, password, firstName, lastName, email, phone);
+    			newAccount.setRegistrationDate(new Date());
+    			userAccounts.add(newAccount);
+    			returnMessage = "Congradulations! Your account has been created. ";
+    		}
+    	    return returnMessage;
     }
  
     //TODO
