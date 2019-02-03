@@ -87,7 +87,11 @@ public class UserAccount {
 	//TODO
 	// you need to complete this method
 	public static boolean isFirstNameValid(String firstName){
-		// check if firstName is valid
+		for (int i = 0; i != firstName.length(); ++i) {
+        		if (!Character.isLetter(firstName.charAt(i))) {
+        		    return false;
+       			 }
+    		}
 		return true;
 	}
 	
@@ -102,10 +106,15 @@ public class UserAccount {
 	//TODO
 	// you need to complete this method
 	public static boolean isLastNameValid(String lastName){
-		// check if lastName is valid
+		for (int i = 0; i != lastName.length(); ++i) {
+        		if (!Character.isLetter(lastName.charAt(i))) {
+        		    return false;
+       			 }
+    		}
 		return true;
 	}
-
+	
+	
 	public String getEmail(){
 		return email;
 	}
@@ -132,7 +141,12 @@ public class UserAccount {
 	//TODO
 	// you need to complete this method
 	public static boolean isPhoneNumberValid(String phone){
-		// check if phone (number) is valid
+		try{
+			int pn  =  Integer.parseInt(phone);
+			return(pn<10000000000 && pn >=1000000000);
+		}catch(exception e){
+			return false;
+		}
 		return true;
 	}
 
