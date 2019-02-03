@@ -38,7 +38,7 @@ public class UserAccountManager {
     			setAccountProfile(newAccount, userName, password, firstName, lastName, email, phone);
     			newAccount.setRegistrationDate(new Date());
     			userAccounts.add(newAccount);
-    			returnMessage = "Congradulations! Your account has been created. ";
+    			returnMessage = NOINPUTERROR;
     		}
     	    return returnMessage;
     }
