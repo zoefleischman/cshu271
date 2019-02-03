@@ -143,8 +143,8 @@ public class UserAccount {
 	public static boolean isPhoneNumberValid(String phone){
 		try{
 			int pn  =  Integer.parseInt(phone);
-			return(pn<10000000000 && pn >=1000000000);
-		}catch(exception e){
+			return(phone.length()==9);
+		}catch(Exception e){
 			return false;
 		}
 		return true;
