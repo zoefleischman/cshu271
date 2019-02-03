@@ -42,11 +42,20 @@ public class UserAccount {
 		this.userName = userName;
 	}
 
-	// TODO
-	// you need to complete this method
+	
 	public static boolean isUserNameValid(String userName){
-		// check if userName is valid
-		return true;
+		boolean valid = true;
+		if(!Character.isLetter(userName.charAt(0))) {
+			valid = false;
+		}
+		for(int i=1;i<userName.length();i++) {
+			if(!Character.isLetter(userName.charAt(i))) {
+				if(!Character.isDigit(userName.charAt(i))) {
+					valid=false;
+				}
+			}
+		}
+		return valid;
 	}
 
 	public String getPassword() {
@@ -142,12 +151,11 @@ public class UserAccount {
 	// you need to complete this method
 	public static boolean isPhoneNumberValid(String phone){
 		try{
-			int pn  =  Integer.parseInt(phone);
+			long pn  =  Long.parseLong(phone);
 			return(phone.length()==9);
 		}catch(Exception e){
 			return false;
 		}
-		return true;
 	}
 
 	public Date getRegistrationDate(){
