@@ -177,7 +177,7 @@ public class UserAccount {
 	 */
 	public void sendEmail(EmailMessageType messageType) {
 
-		String from = email;
+		String from = "UserAccountManager@example.com";
 
 		// Assuming you are sending email from localhost
 		String host = "localhost";
