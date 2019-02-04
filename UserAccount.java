@@ -177,7 +177,7 @@ public class UserAccount {
 	 */
 	public void sendEmail(EmailMessageType messageType) {
 
-		String from = "geoffreymeierr@u.boisestate.edu";
+		String from = email;
 
 		// Assuming you are sending email from localhost
 		String host = "localhost";
@@ -187,9 +187,6 @@ public class UserAccount {
 
 		// Setup mail server
 		properties.setProperty("mail.smtp.host", host);
-		
-		properties.setProperty("mail.user", "geoffreymeier");
-		properties.setProperty("mail.password", "!Gman108_");
 
 		// Get the default Session object.
 		Session session = Session.getDefaultInstance(properties);
