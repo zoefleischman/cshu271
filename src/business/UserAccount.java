@@ -45,10 +45,19 @@ public class UserAccount {
 		this.userName = userName;
 	}
 
-	// you need to complete this method
 	public static boolean isUserNameValid(String userName){
-		// check if userName is valid
-		return true;
+		boolean valid = true;
+		if(!Character.isLetter(userName.charAt(0))) {
+			valid = false;
+		}
+		for(int i=1;i<userName.length();i++) {
+			if(!Character.isLetter(userName.charAt(i))) {
+				if(!Character.isDigit(userName.charAt(i))) {
+					valid=false;
+				}
+			}
+		}
+		return valid;
 	}
 
 	public String getPassword() {
@@ -109,9 +118,12 @@ public class UserAccount {
 		this.firstName = firstName;
 	}
 
-	// you need to complete this method
 	public static boolean isFirstNameValid(String firstName){
-		// check if firstName is valid
+		for (int i = 0; i != firstName.length(); ++i) {
+        		if (!Character.isLetter(firstName.charAt(i))) {
+        		    return false;
+       			 }
+    		}
 		return true;
 	}
 	
@@ -123,9 +135,12 @@ public class UserAccount {
 		this.lastName = lastName;
 	}
 
-	// you need to complete this method
 	public static boolean isLastNameValid(String lastName){
-		// check if lastName is valid
+		for (int i = 0; i != lastName.length(); ++i) {
+        		if (!Character.isLetter(lastName.charAt(i))) {
+        		    return false;
+       			 }
+    		}
 		return true;
 	}
 
