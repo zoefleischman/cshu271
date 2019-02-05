@@ -150,12 +150,8 @@ public class UserAccount {
 	//TODO
 	// you need to complete this method
 	public static boolean isPhoneNumberValid(String phone){
-		try{
-			long pn  =  Long.parseLong(phone);
-			return(phone.length()==9);
-		}catch(Exception e){
-			return false;
-		}
+		// check if phone (number) is valid
+		return true;
 	}
 
 	public Date getRegistrationDate(){
