@@ -58,11 +58,35 @@ public class UserAccount {
 	public void setPassword(String password) {
 		this.password = password;
 	}	
-
-	// you need to complete this method
+	
+	//Checks password for all required elements.
 	public static boolean isPasswordValid(String password){
-		// check if password is valid
-		return true;
+		String specialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/?";
+		char currentChar;
+		boolean containsNumber = false;
+		boolean containsUpperCase = false;
+		boolean containsLowerCase = false;
+		boolean containsSpecialChar = false;
+		boolean isLongEnough = (password.length() > 7);
+
+		for (int i = 0; i < password.length(); i++) {
+			currentChar = password.charAt(i);
+			if (Character.isDigit(currentChar)) {
+				containsNumber = true;
+			} else if (Character.isUpperCase(currentChar)) {
+				containsUpperCase = true;
+			} else if (Character.isLowerCase(currentChar)) {
+				containsLowerCase = true;
+			} else if (specialChars.contains(String.valueOf(currentChar))) {
+				containsSpecialChar = true;
+			}
+		}
+
+		if (containsNumber && containsUpperCase && containsLowerCase && 
+				containsSpecialChar && isLongEnough) {
+			return true;
+		}
+		else return false;
 	}
 
     public boolean isValidCredential(String userName, String password) {
