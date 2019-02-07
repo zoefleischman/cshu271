@@ -68,7 +68,11 @@ public class UserAccount {
 		this.password = password;
 	}	
 	
-	//Checks password for all required elements.
+	/**
+	 * Checks password for all required elements.
+	 * @param password the password to check for validity.
+	 * @return true if valid, false if invalid.
+	 */
 	public static boolean isPasswordValid(String password){
 		String specialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/?";
 		char currentChar;
@@ -76,7 +80,7 @@ public class UserAccount {
 		boolean containsUpperCase = false;
 		boolean containsLowerCase = false;
 		boolean containsSpecialChar = false;
-		boolean isLongEnough = (password.length() > 7);
+		boolean isLongEnough = (password.length() > 5);
 
 		for (int i = 0; i < password.length(); i++) {
 			currentChar = password.charAt(i);
