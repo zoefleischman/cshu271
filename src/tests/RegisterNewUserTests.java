@@ -5,21 +5,39 @@ import junit.framework.TestCase;
 
 public class RegisterNewUserTests extends TestCase{
 	
+	private UserAccount userAccount;
+	
 	protected void setUp() throws Exception {
+		super.setUp();
+		userAccount = new UserAccount();
 	}
 	
-	/**
-	* Tests the validity checker for email addresses on valid
+	public void testRegisterNewUser() {
+		assertTrue(userAccount.re)
+	}
 	
 	public void testValidUserName() {
-		assertTrue(UserAccount.isUserNameValid("jakehalopoff"));	
-	}
-	
-	public void testInvalidUserName() {
+		assertTrue(UserAccount.isUserNameValid("jakehalopoff"));
+		assertFalse(UserAccount.isUserNameValid("")); //Blank field.
 		assertFalse(UserAccount.isUserNameValid("@jakehalopoff")); //Must start with a letter.
 		assertFalse(UserAccount.isUserNameValid("jakehalopoff!")); //Must consist of only letters and digits. 
 		assertFalse(UserAccount.isUserNameValid("jake halopoff")); //No space character.
 	}
+	
+	public void testValidFirstName() {
+		assertTrue(UserAccount.isFirstNameValid("Jake"));
+		assertFalse(UserAccount.isFirstNameValid("@jake"));
+		assertFalse(UserAccount.isFirstNameValid("ja ke"));
+		assertFalse(UserAccount.isFirstNameValid("Jake1"));
+	}
+	
+	public void testValidLastName() {
+		assertTrue(UserAccount.isLastNameValid("Halopoff"));
+		assertFalse(UserAccount.isLastNameValid("@Halopoff" ));
+		assertFalse(UserAccount.isLastNameValid("Halo poff"));
+		assertFalse(UserAccount.isLastNameValid("Halopoff1"));
+	}
+	
 	/**
 	 * Tests the validity checker for email addresses on valid values (checks syntax only)
 	 */
