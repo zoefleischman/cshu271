@@ -12,10 +12,6 @@ public class RegisterNewUserTests extends TestCase{
 		userAccount = new UserAccount();
 	}
 	
-	public void testRegisterNewUser() {
-		assertTrue(userAccount.re)
-	}
-	
 	public void testValidUserName() {
 		assertTrue(UserAccount.isUserNameValid("jakehalopoff"));
 		assertFalse(UserAccount.isUserNameValid("")); //Blank field.
