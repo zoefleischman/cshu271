@@ -23,6 +23,9 @@ public class UserAccountManager {
     		if(duplicate) {
     			returnMessage = "Username already taken.\n";
     		}
+	    	if(!password.equals(reenteredPassword)){
+			returnMessage+="Password and reentered password do not match.\n"
+		}
     		returnMessage+=UserAccount.checkInputError(userName, password, firstName, lastName, email, phone);
     	
     		// check if userName, password, firstName, lastName, email, or phone is invalid 
