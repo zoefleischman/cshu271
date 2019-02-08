@@ -9,6 +9,18 @@ public class RegisterNewUserTests extends TestCase{
 	}
 	
 	/**
+	* Tests the validity checker for email addresses on valid
+	
+	public void testValidUserName() {
+		assertTrue(UserAccount.isUserNameValid("jakehalopoff"));	
+	}
+	
+	public void testInvalidUserName() {
+		assertFalse(UserAccount.isUserNameValid("@jakehalopoff")); //Must start with a letter.
+		assertFalse(UserAccount.isUserNameValid("jakehalopoff!")); //Must consist of only letters and digits. 
+		assertFalse(UserAccount.isUserNameValid("jake halopoff")); //No space character.
+	}
+	/**
 	 * Tests the validity checker for email addresses on valid values (checks syntax only)
 	 */
 	public void testValidEmail() {
