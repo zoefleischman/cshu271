@@ -5,7 +5,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class UserAccount {
-	
+
 	private String userName;
 	private String password;
 	private String firstName;
@@ -14,18 +14,18 @@ public class UserAccount {
 	private String phone;
 	private Date registrationDate;
 	private Date lastUpdateDate;
-	
+
 	public enum EmailMessageType {FORGOT_USERNAME, FORGOT_PASSWORD}
-	
+
 	public UserAccount() {	
 	}
-	
+
 	public static String checkInputError(String userName, String password, String firstName, String lastName, String email, String phone){
 		String errorMessage ="";
 		if (!isUserNameValid(userName))
-				errorMessage += "Invalid user name.\n";
+			errorMessage += "Invalid user name.\n";
 		if (!isPasswordValid(password))
-				errorMessage += "Invalid password.\n";	
+			errorMessage += "Invalid password.\n";	
 		if (!isFirstNameValid(firstName))
 			errorMessage += "Invalid first name.\n";
 		if (!isLastNameValid(lastName))
@@ -36,7 +36,7 @@ public class UserAccount {
 			errorMessage += "Invalid phone number.\n";
 		return errorMessage;
 	}
-	
+
 	public String getUserName(){
 		return userName;
 	}
@@ -67,7 +67,7 @@ public class UserAccount {
 	public void setPassword(String password) {
 		this.password = password;
 	}	
-	
+
 	/**
 	 * Checks password for all required elements.
 	 * @param password the password to check for validity.
@@ -98,21 +98,21 @@ public class UserAccount {
 		if (containsNumber && containsUpperCase && containsLowerCase && 
 				containsSpecialChar && isLongEnough) {
 			return true;
-		}
+				}
 		else return false;
 	}
 
-    public boolean isValidCredential(String userName, String password) {
-         return matchUserName(userName) && matchPassword(password);
-    }
-    
-    public boolean matchUserName(String userName) {
-         return userName != null && userName.equals(this.userName);
-    }
-    
-    private boolean matchPassword(String password) {
-        return password != null && password.equals(this.password);
-   }
+	public boolean isValidCredential(String userName, String password) {
+		return matchUserName(userName) && matchPassword(password);
+	}
+
+	public boolean matchUserName(String userName) {
+		return userName != null && userName.equals(this.userName);
+	}
+
+	private boolean matchPassword(String password) {
+		return password != null && password.equals(this.password);
+	}
 
 	public String getFirstName(){
 		return firstName;
@@ -124,13 +124,13 @@ public class UserAccount {
 
 	public static boolean isFirstNameValid(String firstName){
 		for (int i = 0; i != firstName.length(); ++i) {
-        		if (!Character.isLetter(firstName.charAt(i))) {
-        		    return false;
-       			 }
-    		}
+			if (!Character.isLetter(firstName.charAt(i))) {
+				return false;
+			}
+		}
 		return true;
 	}
-	
+
 	public String getLastName(){
 		return lastName;
 	}
@@ -141,10 +141,10 @@ public class UserAccount {
 
 	public static boolean isLastNameValid(String lastName){
 		for (int i = 0; i != lastName.length(); ++i) {
-        		if (!Character.isLetter(lastName.charAt(i))) {
-        		    return false;
-       			 }
-    		}
+			if (!Character.isLetter(lastName.charAt(i))) {
+				return false;
+			}
+		}
 		return true;
 	}
 
@@ -162,14 +162,14 @@ public class UserAccount {
 	 * @return true if valid, false if invalid.
 	 */
 	public static boolean isEmailValid(String email){
-		
+
 		try {
 			InternetAddress emailAddress = new InternetAddress(email);
 			emailAddress.validate();
 		} catch (AddressException e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -183,10 +183,10 @@ public class UserAccount {
 
 	// you need to complete this method
 	public static boolean isPhoneNumberValid(String phone){
-		
+
 		String validChars = "0123456789";
 		if (phone.length()==10) {
-			
+
 			for (int i=0; i<phone.length(); i++) {
 				if (!validChars.contains(phone.substring(i,i+1)))
 					return false;
@@ -246,26 +246,25 @@ public class UserAccount {
 
 			// Set Subject: header field
 			switch (messageType) {
-			case FORGOT_USERNAME:
-				message.setSubject("Forgot Username - User Account Manager");
-				message.setText("Hello "+firstName+",\n\n"
-								+"Your username is "+userName+".\n\n"
-								+"-User Account Manager Team");
-				break;
-			case FORGOT_PASSWORD:
-				message.setSubject("Forgot Password - User Account Manager");
-				message.setText("Hello "+firstName+",\n\n"
-								+"Your password is "+password+".\n\n"
-								+"-User Account Manager Team");
-				break;
+				case FORGOT_USERNAME:
+					message.setSubject("Forgot Username - User Account Manager");
+					message.setText("Hello "+firstName+",\n\n"
+							+"Your username is "+userName+".\n\n"
+							+"-User Account Manager Team");
+					break;
+				case FORGOT_PASSWORD:
+					message.setSubject("Forgot Password - User Account Manager");
+					message.setText("Hello "+firstName+",\n\n"
+							+"Your password is "+password+".\n\n"
+							+"-User Account Manager Team");
+					break;
 			}
-			
+
 			Transport.send(message);
-			
+
 		} catch (MessagingException mex) {
 			System.out.println("**Failed to send email**");
 			mex.printStackTrace();
 		}
 	}
-
 }
