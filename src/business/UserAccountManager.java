@@ -49,15 +49,36 @@ public class UserAccountManager {
     public String updateAccountProfile(UserAccount existingAccount, 
     		String userName, String password, String reenteredPassword, 
     		String firstName, String lastName, String email, String phone){
-		// check if userName, password, firstName, lastName, email, or phone is invalid 
+		
+	    	String returnMessage = "";
+    		boolean duplicate = false;
+    		for(UserAccount a : userAccounts) {
+    			if(a.getUserName().equalsIgnoreCase(userName)) {
+    				duplicate=true;
+    			}
+    		}
+    		if(duplicate) {
+    			returnMessage = "Username already taken.\n";
+    		}
+	    	if(!password.equals(reenteredPassword)){
+			returnMessage+="Password and reentered password do not match.\n"
+		}
+    		returnMessage+=UserAccount.checkInputError(userName, password, firstName, lastName, email, phone);
+    	
+	    // check if userName, password, firstName, lastName, email, or phone is invalid 
 		// if invalid, return error message
 		// if reenteredPassword does not match password
 		// return an error message;
     		// if there is no profile change (refer to method hasProfileChanges below), return a message 
 		// if userName is changed and the new userName already exists
 		// return an error message;
+	    if(hasProfileChanges(UserAccount existingAccount, String userName, String password, 
+    		String firstName, String lastName, String email, String phone)&&returnMessage==""){
+		    
   		setAccountProfile(existingAccount, userName, password, firstName, lastName, email, phone);
   		existingAccount.setLastUpdateDate(new Date());
+		    returnMessage=NOINPUTERROR;
+	    }
 	    return NOINPUTERROR;
     }
     
