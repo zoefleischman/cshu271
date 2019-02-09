@@ -12,6 +12,10 @@ public class RegisterNewUserTests extends TestCase{
 		userAccount = new UserAccount();
 	}
 	
+	public void testRegisterNewUser() {
+		UserAccount.checkInputError("jakehalopoff", "jakepass", "Jake", "Halopoff", "jakehalopoff@u.boisestate.edu", "2087213233");
+	}
+	
 	public void testValidUserName() {
 		assertTrue(UserAccount.isUserNameValid("jakehalopoff"));
 		assertFalse(UserAccount.isUserNameValid("")); //Blank field.
@@ -22,16 +26,18 @@ public class RegisterNewUserTests extends TestCase{
 	
 	public void testValidFirstName() {
 		assertTrue(UserAccount.isFirstNameValid("Jake"));
-		assertFalse(UserAccount.isFirstNameValid("@jake"));
-		assertFalse(UserAccount.isFirstNameValid("ja ke"));
-		assertFalse(UserAccount.isFirstNameValid("Jake1"));
+		assertFalse(UserAccount.isFirstNameValid("")); //Blank field.
+		assertFalse(UserAccount.isFirstNameValid("@jake")); //Must start with a letter, no special characters.
+		assertFalse(UserAccount.isFirstNameValid("ja ke")); //No space character.
+		assertFalse(UserAccount.isFirstNameValid("Jake1")); //Letters only.
 	}
 	
 	public void testValidLastName() {
 		assertTrue(UserAccount.isLastNameValid("Halopoff"));
-		assertFalse(UserAccount.isLastNameValid("@Halopoff" ));
-		assertFalse(UserAccount.isLastNameValid("Halo poff"));
-		assertFalse(UserAccount.isLastNameValid("Halopoff1"));
+		assertFalse(UserAccount.isLastNameValid("")); //Blank field.
+		assertFalse(UserAccount.isLastNameValid("@Halopoff" )); //Must start with a letter.
+		assertFalse(UserAccount.isLastNameValid("Halo poff")); //No space character.
+		assertFalse(UserAccount.isLastNameValid("Halopoff1")); //Letters only. 
 	}
 	
 	/**
@@ -69,6 +75,25 @@ public class RegisterNewUserTests extends TestCase{
 		assertFalse(UserAccount.isPhoneNumberValid("800abc5000")); //contains letters
 		assertFalse(UserAccount.isPhoneNumberValid("(800) 555-5555")); //contains parentheses, space, and dash
 		assertFalse(UserAccount.isPhoneNumberValid("208!426%1*%$")); //contains symbols
+	}
+	
+	public void testIsPasswordValid() {
+        //correct password
+		assertTrue(UserAccount.isPasswordValid("Bobby'sPassword1"));
+        //incorrect password
+        assertFalse(UserAccount.isPasswordValid("badpassword"));
+        //no number
+        assertFalse(UserAccount.isPasswordValid("Bobby'sPassword"));
+		//no special char
+        assertFalse(UserAccount.isPasswordValid("BobbysPassword1"));
+        //no uppercase
+        assertFalse(UserAccount.isPasswordValid("bobby'spassword1"));
+        //no lowercase
+        assertFalse(UserAccount.isPasswordValid("BOBBY'SPASSWORD1"));
+		//not 6 char long
+        assertFalse(UserAccount.isPasswordValid("B'sP1"));
+        //blank password
+        assertFalse(UserAccount.isPasswordValid(""));
 	}
 	
 }
