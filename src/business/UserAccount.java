@@ -216,7 +216,7 @@ public class UserAccount {
 	 * Sends an email to the specified address
 	 * 
 	 * Adapted from www.tutorialspoint.com
-	 * @param to The email address to send an email to
+	 * @param messageType FORGOT_USERNAME or FORGOT_PASSWORD based on desired message to be sent.
 	 */
 	public void sendEmail(EmailMessageType messageType) {
 
