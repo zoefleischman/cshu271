@@ -11,6 +11,7 @@ public class UserAccountManager {
     public UserAccountManager() {
         userAccounts = new ArrayList<UserAccount>();
     }
+    
     public String registerNewUser(String userName, String password, String reenteredPassword, 
     		String firstName, String lastName, String email, String phone){
     		String returnMessage = "";
@@ -44,8 +45,6 @@ public class UserAccountManager {
     	    return returnMessage;
     }
  
-    //TODO
-    // You need to complete this method
     public String updateAccountProfile(UserAccount existingAccount, 
     		String userName, String password, String reenteredPassword, 
     		String firstName, String lastName, String email, String phone){
@@ -126,15 +125,23 @@ public class UserAccountManager {
 		return NOINPUTERROR; // you may change this statement if necessary
    	
     }
- 	//TODO
-	// you need to complete this method
+
     public String forgotPassword(String userName){
 		// Check if the given user name is valid
 		// if not, return an error message
 		// check if there is an account that matches the given user name
 		// if found, send the password to the email address
 		// otherwise return an error message
-	    return NOINPUTERROR; // you may change this statement if necessary
+    	if (!UserAccount.isUserNameValid(userName))
+    		return "That username is invalid. Please try again.";
+    	for (UserAccount userAccount: userAccounts) {
+    		if (userAccount.matchUserName(userName)) {
+    			userAccount.sendEmail(FORGOT_PASSWORD);
+    			return "An email containing your password has been sent!";
+    		}
+    		else
+    			return "That username does not exist. Please try again.";
+    	}
     }
 
     
