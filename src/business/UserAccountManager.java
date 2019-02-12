@@ -136,7 +136,7 @@ public class UserAccountManager {
     		return "That username is invalid. Please try again.";
     	for (UserAccount userAccount: userAccounts) {
     		if (userAccount.matchUserName(userName)) {
-    			userAccount.sendEmail(FORGOT_PASSWORD);
+    			userAccount.sendEmail(EmailMessageType.FORGOT_PASSWORD);
     			return "An email containing your password has been sent!";
     		}
     		else
