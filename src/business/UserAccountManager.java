@@ -2,9 +2,11 @@ package business;
 import java.util.ArrayList;
 import java.util.Date;
 
+import business.UserAccount.EmailMessageType;
+
 public class UserAccountManager {
 
-	public static final String NOINPUTERROR ="";
+	public static final String NOINPUTERROR ="Email with username/password has been sent. Please check your inbox.";
 
     private ArrayList<UserAccount> userAccounts;
 
@@ -123,12 +125,11 @@ public class UserAccountManager {
 		// if found, send the user name to the email address
 		// otherwise return an error message
 		if (!UserAccount.isEmailValid(email)) {
-			return "This email either does not exist, or was entered incorrectly. Please try again."
+			return "This email either does not exist, or was entered incorrectly. Please try again.";
 		}
 		for (UserAccount userAccount: userAccounts) {
-			if (userAccount.matches(email)) {
-				userAccount.sendEmail(EmailMessageType.FORGOT_USER_NAME);
-				return "An email containing your username has been sent."
+			if (userAccount.getEmail() == (email)) {
+				userAccount.sendEmail(EmailMessageType.FORGOT_USERNAME);
 			}
 		}
 		return NOINPUTERROR; // you may change this statement if necessary
