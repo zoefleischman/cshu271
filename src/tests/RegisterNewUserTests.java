@@ -5,26 +5,27 @@ import junit.framework.TestCase;
 
 public class RegisterNewUserTests extends TestCase{
 
-	private UserAccountManager UserAccountManager;
+	private UserAccountManager userAccountManager;
 	private UserAccount userAccount;
 
 	protected void setUp() throws Exception {
 		super.setUp();
 		userAccountManager = new UserAccountManager();
-		userAccount = new userAccount;
+		userAccount = new UserAccount();
 	}
 
 	public void testRegisterNewUser() {
-		String registrationResult = userAccountManager.registerNewUser("jake",
-		"j@kepass1","j@kepass1","Jake","Halopoff""jakehalopoff@gmail.com","2087213233");
+		String registrationResult = userAccountManager.registerNewUser("jake","j@kepass1","j@kepass1","Jake","Halopoff","jakehalopoff@gmail.com","2087213233");
 
-		assertEquals(registrationResult, UserAccountManager.NOINPUTERROR);
+		assertEquals(registrationResult, business.UserAccountManager.NOINPUTERROR);
 		userAccount = userAccountManager.login("jake","j@kepass1");
 		assertNotNull(userAccount);
 		userAccount.getUserName().equalsIgnoreCase("jake");
 		userAccount.getEmail().equalsIgnoreCase("jakehalopoff@gmail.com");
 		userAccount.getFirstName().equalsIgnoreCase("Jake");
 		userAccount.getLastName().equalsIgnoreCase("Halopoff");
+		userAccount.getPassword().equalsIgnoreCase("j@kepass1");
+		userAccount.getPhoneNumber().equalsIgnoreCase("2087213233");
 	}
 
 	public void testValidUserName() {
