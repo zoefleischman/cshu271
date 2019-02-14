@@ -6,7 +6,7 @@ import business.UserAccount.EmailMessageType;
 
 public class UserAccountManager {
 
-	public static final String NOINPUTERROR ="Email with username/password has been sent. Please check your inbox.";
+	public static final String NOINPUTERROR ="";
 
     private ArrayList<UserAccount> userAccounts;
 
