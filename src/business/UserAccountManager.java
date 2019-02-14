@@ -27,7 +27,7 @@ public class UserAccountManager {
     			returnMessage = "Username already taken.\n";
     		}
 	    	if(!password.equals(reenteredPassword)){
-			returnMessage+="Password and reentered password do not match.\n"
+			returnMessage+="Password and reentered password do not match.\n";
 		}
     		returnMessage+=UserAccount.checkInputError(userName, password, firstName, lastName, email, phone);
 
@@ -62,7 +62,7 @@ public class UserAccountManager {
     			returnMessage = "Username already taken.\n";
     		}
 	    	if(!password.equals(reenteredPassword)){
-			returnMessage+="Password and reentered password do not match.\n"
+			returnMessage+="Password and reentered password do not match.\n";
 		}
     		returnMessage+=UserAccount.checkInputError(userName, password, firstName, lastName, email, phone);
 
@@ -147,11 +147,11 @@ public class UserAccountManager {
     	for (UserAccount userAccount: userAccounts) {
     		if (userAccount.matchUserName(userName)) {
     			userAccount.sendEmail(EmailMessageType.FORGOT_PASSWORD);
-    			return "An email containing your password has been sent!";
     		}
     		else
     			return "That username does not exist. Please try again.";
     	}
+    	return NOINPUTERROR;
     }
 
 
