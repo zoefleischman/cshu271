@@ -73,8 +73,8 @@ public class UserAccountManager {
     		// if there is no profile change (refer to method hasProfileChanges below), return a message
 		// if userName is changed and the new userName already exists
 		// return an error message;
-	    if(hasProfileChanges(UserAccount existingAccount, String userName, String password,
-    		String firstName, String lastName, String email, String phone)&&returnMessage==""){
+	    if(hasProfileChanges(existingAccount, userName, password,
+    		 firstName, lastName, email, phone)&&returnMessage==""){
 
   		setAccountProfile(existingAccount, userName, password, firstName, lastName, email, phone);
   		existingAccount.setLastUpdateDate(new Date());
