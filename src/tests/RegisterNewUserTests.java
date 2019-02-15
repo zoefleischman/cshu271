@@ -15,16 +15,16 @@ public class RegisterNewUserTests extends TestCase{
 	}
 
 	public void testRegisterNewUser() {
-		String registrationResult = userAccountManager.registerNewUser("jake","j@kepass1","j@kepass1","Jake","Halopoff","jakehalopoff@gmail.com","2087213233");
+		String registrationResult = userAccountManager.registerNewUser("jake","J@kepass1","J@kepass1","Jake","Halopoff","jakehalopoff@gmail.com","2087213233");
 
 		assertEquals(registrationResult, business.UserAccountManager.NOINPUTERROR);
-		userAccount = userAccountManager.login("jake","j@kepass1");
+		userAccount = userAccountManager.login("jake","J@kepass1");
 		assertNotNull(userAccount);
 		userAccount.getUserName().equalsIgnoreCase("jake");
 		userAccount.getEmail().equalsIgnoreCase("jakehalopoff@gmail.com");
 		userAccount.getFirstName().equalsIgnoreCase("Jake");
 		userAccount.getLastName().equalsIgnoreCase("Halopoff");
-		userAccount.getPassword().equalsIgnoreCase("j@kepass1");
+		userAccount.getPassword().equalsIgnoreCase("J@kepass1");
 		userAccount.getPhoneNumber().equalsIgnoreCase("2087213233");
 	}
 
