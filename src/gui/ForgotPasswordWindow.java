@@ -67,7 +67,7 @@ public class ForgotPasswordWindow extends JDialog{
 	}
 
 	void confirmButtonHandler(ActionEvent e) {
-		String actionResult = accountManager.forgotUserName(userNameTextField.getText());
+		String actionResult = accountManager.forgotPassword(userNameTextField.getText());
     		if(actionResult.equals(UserAccountManager.NOINPUTERROR)) 
     			JOptionPane.showMessageDialog(this, "Password has been sent to the email address!", "Forgot Password", JOptionPane.INFORMATION_MESSAGE);
 	    else
