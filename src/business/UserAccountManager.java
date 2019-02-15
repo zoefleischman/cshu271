@@ -83,13 +83,13 @@ public class UserAccountManager {
 	    return NOINPUTERROR;
     }
 
-    //TODO
-    // You need to complete this method.
-    // It should be called in method updateAccountProfile
-    private boolean hasProfileChanges(UserAccount existingAccount, String userName, String password,
+     private boolean hasProfileChanges(UserAccount existingAccount, String userName, String password, 
     		String firstName, String lastName, String email, String phone){
-    		// check profile change
-		return true; // you may change this statement if necessary
+    		boolean different = false;
+    		if(!userName.equals(existingAccount.getUserName())||!password.equals(existingAccount.getPassword())||!firstName.equals(existingAccount.getFirstName())||!lastName.equals(existingAccount.getLastName())||!email.equals(existingAccount.getEmail())||!phone.equals(existingAccount.getPhoneNumber())) {
+    		different = true;
+    		}
+		return different; 
     }
 
     private void setAccountProfile(UserAccount userAccount, String userName, String password, String firstName, String lastName, String email, String phone){
