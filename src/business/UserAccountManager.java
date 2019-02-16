@@ -80,7 +80,7 @@ public class UserAccountManager {
   		existingAccount.setLastUpdateDate(new Date());
 		    returnMessage=NOINPUTERROR;
 	    }
-	    return NOINPUTERROR;
+	    return returnMessage;
     }
 
      private boolean hasProfileChanges(UserAccount existingAccount, String userName, String password, 
