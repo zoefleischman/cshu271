@@ -116,7 +116,8 @@ public class UserAccountManager {
     				return true;
     		return false;
     }
-
+    //TODO
+	// you need to complete this method
  	public String forgotUserName(String email){
 		// Check if the given email is valid
 		// if not, return an error message
@@ -130,8 +131,8 @@ public class UserAccountManager {
 			if (userAccount.getEmail() == (email)) {
 				userAccount.sendEmail(EmailMessageType.FORGOT_USERNAME);
 			}
-			else 
-				return "That email could not be found. Please try again."; 
+			else
+				return "This email either does not exist, or was entered incorrectly. Please try again.";
 		}
 		return NOINPUTERROR; // you may change this statement if necessary
 
